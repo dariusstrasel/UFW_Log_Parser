@@ -7,3 +7,4 @@ __pycache__
 # Local virtual enviornment
 venv/
 
+ufw.log
