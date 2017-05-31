@@ -1,5 +1,5 @@
 """
-Title: parser.py
+Title: UFW Log Parser
 Author: Darius Strasel @dariusstrasel
 Description: takes an input logfile and returns all the lines as a Python dictionary.
 """
@@ -97,6 +97,19 @@ def _dump_to_JSON(dictionary_input):
     """Saves a Python dictionary to a JSON file."""
     with open('result.json', 'w') as fp:
         return json.dump(dictionary_input, fp)
+
+def _get_dict_keys(parser_results):
+    """Returns a list of all the keys found in the argument parser result; helps to define data model of logfile."""
+    results = parser_results
+    existing_keys = []
+    for result in results:
+        for key in list(result.keys()):
+            if key not in existing_keys:
+                existing_keys.append(key)
+        else:
+            pass
+    print(existing_keys)
+
 
 def process_file(file_name):
     """Main function used to starr parser. Accepts filepath of file to process."""
