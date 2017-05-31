@@ -4,7 +4,7 @@ Author: Darius Strasel @dariusstrasel
 Description: takes an input logfile and returns all the lines as a Python dictionary.
 """
 
-import datetime
+import time
 import re
 import json
 
@@ -117,14 +117,14 @@ def process_file(file_name):
     try:
         with open(file_name, 'r+') as logfile:
             print("Opening: %s" % file_name)
-            start = datetime.datetime.now()
+            execution_start_time = time.time()
             for line in logfile:
                     result.append(_tokenize_line(line))
-            end = datetime.datetime.now()
-            print("Start: %s, End: %s" % (start, end))
+            execution_end_time = time.time()
     except IOError:
         print("File is locked.")
         raise
+    print("Elapsed: %s Found: %s events" % ((execution_end_time - execution_start_time), len(result)))
     return result
 
 if __name__ == "__main__":
