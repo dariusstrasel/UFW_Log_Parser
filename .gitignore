@@ -1,0 +1,9 @@
+# IntelliJ IDE Project MetaData
+.idea/
+
+# Python Cache
+__pycache__
+
+# Local virtual enviornment
+venv/
+
